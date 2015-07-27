@@ -33,6 +33,7 @@
       // Here we are just setting up some convenience urls.
         .when('/c?id', '/contacts/:id')
         .when('/user/:id', '/contacts/:id')
+        //.when('/url', function($match, $stateParams) {})
 
       // If the url is ever invalid, e.g. '/asdf', then redirect to '/' aka the home state
       .otherwise('/');
@@ -42,12 +43,20 @@
         .state("home", {
           // Use a url of "/" to set a states as the "index".
           url: "/",
-          // Example of an inline template string. By default, templates
-          // will populate the ui-view within the parent state's template.
-          // For top level states, like this one, the parent template is
-          // the index.html file. So this template will be inserted into the
-          // ui-view within index.html.
-          templateUrl: 'views/main.html'
+          views: {
+            "apple": {
+              // Example of an inline template string. By default, templates
+              // will populate the ui-view within the parent state's template.
+              // For top level states, like this one, the parent template is
+              // the index.html file. So this template will be inserted into the
+              // ui-view within index.html.
+              templateUrl: 'views/main.html'
+            },
+            "banana": {
+              // template: "<h3>多视图测试.</h3>"
+              templateUrl: 'views/segments/banana.html'
+            }
+          }
         })
         .state('about', {
           url: '/about',
@@ -95,6 +104,8 @@
             // 验证用户有效性
             console.log("fromeState:" + fromState);
             console.log("toState:" + toState);
+            console.log("fromParams:" + fromParams);
+            console.log("toParams:" + toParams);
             if (toState === fromState) {
               event.preventDefault();
             }
