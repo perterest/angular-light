@@ -22,7 +22,9 @@
       'ngRoute',
       'ngSanitize',
       'ngTouch',
-      'ui.router'
+      'ui.router',
+      'ui.grid',
+      'ui.bootstrap'
     ])
     .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
